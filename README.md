@@ -66,8 +66,32 @@ Open the file `.github/workflows/update-folder.yml` in your text editor and upda
     git commit -m "Update workflow file with my GitHub details"
     git push
 
+# Step 5: Test Your Workflow
 
-# Step 5: Enjoy Easy Smart Work Visibility
+Before relying on scheduled runs, it's a good idea to test your workflow manually. Follow these steps:
+
+1. **Go to Your Repository on GitHub:**  
+   Open your repository page in GitHub.
+
+2. **Navigate to the Actions Tab:**  
+   Click on the **Actions** tab in the repository navigation menu.
+
+3. **Select the Relevant Workflow:**  
+   Find and click on your workflow (for example, "Update Folder Workflow" or the job labeled "updates").
+
+4. **Run the Workflow Manually:**  
+   Look for the **Run workflow** button (sometimes located in the upper-right corner of the workflow details page) and click it.  
+   - You might be prompted to select a branch—ensure you choose the correct one (usually `main`).
+
+5. **Monitor the Job:**  
+   After triggering the workflow, monitor the job's execution to ensure all steps complete successfully.  
+   - Check for any errors or issues in the logs.
+
+Once confirmed, your workflow is ready and will run automatically according to the scheduled cron expression.
+
+
+
+# Step 6: Enjoy Easy Smart Work Visibility
 
 Your GitHub Actions workflow is now set up and will run automatically on a schedule. With this automation, you’ll see a randomized number of commits each day—giving you a unique visualization of your activity.
 
