@@ -32,22 +32,22 @@ You need a Personal Access Token (PAT) to push changes to the workflow file.
 
 Clone this repository locally and push it to your new GitHub repository using the following commands:
 
-```bash
-# Clone this repository
-git clone https://github.com/AdrienViault/work_smarter.git
+    ```bash
+    # Clone this repository
+    git clone https://github.com/AdrienViault/work_smarter.git
 
-# Change into the cloned directory
-cd work_smarter
+    # Change into the cloned directory
+    cd work_smarter
 
-# Initialize it as a new Git repository (if not already initialized)
-git init
+    # Initialize it as a new Git repository (if not already initialized)
+    git init
 
-# Link it to your GitHub repository (replace YOUR_GITHUB_USERNAME and YOUR_REPO_NAME)
-git remote add origin https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git
+    # Link it to your GitHub repository (replace YOUR_GITHUB_USERNAME and YOUR_REPO_NAME)
+    git remote add origin https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git
 
-# Set the main branch and push the code to your repository
-git branch -M main
-git push -u origin main
+    # Set the main branch and push the code to your repository
+    git branch -M main
+    git push -u origin main
 
 # Step 4: Modify the Workflow File
 
