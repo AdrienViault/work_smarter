@@ -57,7 +57,12 @@ jobs:
             git add .
             
             # Commit changes if any exist, using the last line of the troll roll file (or "no msg")
-            if !git diff --cached --exit-code HEAD; then
+
+            # Capture the diff output from staged changes
+            diff=$(git diff --cached HEAD)
+
+            # Commit changes with a message that includes today's date if there are changes
+            if [ "$diff" != "" ]; then
               if [ -f "data/troll_rolls/troll_roll.txt" ]; then
                 msg=$(tail -n 1 data/troll_rolls/troll_roll.txt)
               else
