@@ -1,0 +1,109 @@
+name: Update Folder Workflow 1.5
+
+permissions:
+  contents: write
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Runs daily at midnight UTC
+  workflow_dispatch:    # Allows manual triggering
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      # Step 3: Install dependencies (if you have a requirements.txt)
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # Step 4: Run main update script and commit its result
+      - name: Run main update script and commit scraping result
+        run: |
+          # Run the main scraping script
+          python src/main.py
+
+          # Configure Git
+          git config --local user.email "adrien.viault@pm.me"
+          git config --local user.name "AdrienViault"
+
+          # Stage changes
+          git add .
+
+          # Commit changes with a message that includes today's date if there are changes
+          if ! git diff-index --quiet HEAD; then
+            today=$(date +'%Y-%m-%d')
+            git commit -m "daily scraping result of day $today"
+            echo "Committed main update with message: daily scraping result of day $today"
+          else
+            echo "No changes to commit for main update."
+          fi
+
+      # Step 5: Execute looped update scripts with per-iteration commits
+      - name: Run looped update scripts with commit
+        run: |
+          counter=0
+          max=10
+          
+          while [ $counter -lt $max ]; do
+            echo "Iteration $counter"
+            
+            # Run your secondary update script
+            python src/troll_editing.py
+            
+            # Wait for 2 seconds for processing
+            sleep 2
+            
+            # Check a condition via a file to decide if we should continue
+            if [ -f "continue.txt" ]; then
+              status=$(cat continue.txt)
+              echo "Status from file: $status"
+              if [ "$status" != "True" ]; then
+                echo "Exiting loop because condition is met."
+                break
+              fi
+            else
+              echo "No condition file found; assuming continue."
+            fi
+
+            # Stage all changes
+            git add .
+            
+            # Commit changes if any exist, using the last line of the troll roll file (or "no msg")
+            if !git diff --cached --exit-code HEAD; then
+              if [ -f "data/troll_rolls/troll_roll.txt" ]; then
+                msg=$(tail -n 1 data/troll_rolls/troll_roll.txt)
+              else
+                msg=""
+              fi
+              if [ -z "$msg" ]; then
+                msg="no msg"
+              fi
+              git commit -m "the daily troll roll was : $msg"
+              echo "Committed with message: the daily troll roll was : $msg"
+            else
+              echo "No changes to commit in this iteration."
+            fi
+            
+            counter=$((counter+1))
+          done
+
+      # Step 6: Push all commits to the repository
+      - name: Push changes
+        run: git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
