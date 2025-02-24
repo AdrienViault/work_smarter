@@ -39,6 +39,9 @@ Clone this repository locally and push it to your new GitHub repository using th
     # Change into the cloned directory
     cd work_smarter
 
+    # Remove existing .git folder
+    sudo rm -rf .git
+
     # Initialize it as a new Git repository (if not already initialized)
     git init
 
