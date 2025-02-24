@@ -49,6 +49,8 @@ Clone this repository locally and push it to your new GitHub repository using th
     git branch -M main
     git push -u origin main
 
+---
+
 # Step 4: Modify the Workflow File
 
 Open the file `.github/workflows/update-folder.yml` in your text editor and update it as follows:
@@ -65,6 +67,8 @@ Open the file `.github/workflows/update-folder.yml` in your text editor and upda
     git add .github/workflows/update-folder.yml
     git commit -m "Update workflow file with my GitHub details"
     git push
+
+---
 
 # Step 5: Test Your Workflow
 
@@ -89,6 +93,8 @@ Before relying on scheduled runs, it's a good idea to test your workflow manuall
 
 Once confirmed, your workflow is ready and will run automatically according to the scheduled cron expression.
 
+
+---
 
 
 # Step 6: Enjoy Easy Smart Work Visibility
