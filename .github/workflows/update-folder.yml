@@ -29,6 +29,11 @@ jobs:
       # Step 5: Execute looped update scripts with per-iteration commits
       - name: Run looped update scripts with commit
         run: |
+          # Configure Git
+          git config --local user.email "adrien.viault@pm.me"
+          git config --local user.name "AdrienViault"
+
+          
           counter=0
           max=10
           
