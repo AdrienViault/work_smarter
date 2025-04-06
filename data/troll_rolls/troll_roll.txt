@@ -112,3 +112,4 @@ more than 5 to continue and rolled 6
 more than 5 to continue and rolled 7
 more than 5 to continue and rolled 3
 more than 6 to continue and rolled 3
+more than 7 to continue and rolled 4
