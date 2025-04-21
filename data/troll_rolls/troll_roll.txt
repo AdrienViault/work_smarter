@@ -152,3 +152,4 @@ more than 5 to continue and rolled 1
 more than 1 to continue and rolled 3
 more than 1 to continue and rolled 6
 more than 1 to continue and rolled 3
+more than 1 to continue and rolled 2
