@@ -266,3 +266,4 @@ more than 2 to continue and rolled 7
 more than 2 to continue and rolled 4
 more than 2 to continue and rolled 3
 more than 2 to continue and rolled 2
+more than 3 to continue and rolled 3
