@@ -366,3 +366,4 @@ more than 5 to continue and rolled 2
 more than 1 to continue and rolled 2
 more than 1 to continue and rolled 4
 more than 1 to continue and rolled 6
+more than 1 to continue and rolled 4
