@@ -595,3 +595,4 @@ more than 2 to continue and rolled 5
 more than 4 to continue and rolled 3
 more than 1 to continue and rolled 5
 more than 1 to continue and rolled 5
+more than 1 to continue and rolled 4
